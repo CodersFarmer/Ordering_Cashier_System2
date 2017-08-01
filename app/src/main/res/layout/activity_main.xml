@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.HeyGuo.android.ui.activity.MainActivity">
+    //选择就餐人数的布局
+
+    <include
+        android:id="@+id/ll_activity_num_header"
+        layout="@layout/activity_num_header"
+        android:visibility="gone" />
+    <LinearLayout
+        android:id="@+id/ll_acticity_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        //主页的内容
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <com.HeyGuo.android.widget.HorizontalListView
+            android:id="@+id/hl_tab01"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:visibility="visible">
+        </com.HeyGuo.android.widget.HorizontalListView>
+        <com.HeyGuo.android.widget.HorizontalListView
+            android:id="@+id/hl_tab02"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:visibility="visible">
+        </com.HeyGuo.android.widget.HorizontalListView>
+    </LinearLayout>
+</FrameLayout>

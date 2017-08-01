@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    //状态栏的内容
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FF0000"
+        android:orientation="horizontal"
+        android:paddingTop="25dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="3"
+            android:padding="2dp"
+            android:text="今日台数:12"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="2"
+            android:padding="2dp"
+            android:text="人数：4"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="4"
+            android:padding="2dp"
+            android:text="营业额：16.00"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="4"
+            android:padding="2dp"
+            android:text="实收：10.00"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="2"
+            android:padding="2dp"
+            android:text="刷新"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="3"
+            android:padding="2dp"
+            android:text="超级管理员"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:onClick="cancel"
+            android:padding="2dp"
+            android:text="退出"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/activity_base_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>
