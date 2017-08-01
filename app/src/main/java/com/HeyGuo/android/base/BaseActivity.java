@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.HeyGuo.android.R;
@@ -21,7 +23,7 @@ import com.HeyGuo.android.utils.ActivityCollector;
  * Email： 17600116624@163.com
  * Content:有点击两次返回才退出界面,初始化屏幕方向，有默认的头布局
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
     //退出时的时间
     private long mExitTime = 0;
     //初始屏幕的状态   默认是横屏
@@ -30,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
     public static boolean control = true;
     //容器
     public static FrameLayout frameLayout;
-
+    TextView cancel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +44,17 @@ public class BaseActivity extends AppCompatActivity {
         //控制activity
         ActivityCollector.addActivityS(this);
         initView();
+        initEvent();
+    }
 
+    private void initEvent() {
+        cancel.setOnClickListener(this);
     }
 
     //初始化布局
     private void initView() {
         frameLayout = (FrameLayout) findViewById(R.id.activity_base_container);
+        cancel = (TextView) findViewById(R.id.tv_Baseactivity_cancel);
     }
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
@@ -105,5 +112,14 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_Baseactivity_cancel:
+                Toast.makeText(getApplicationContext(),"我是Base指令",Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 }

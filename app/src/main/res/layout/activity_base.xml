@@ -79,12 +79,12 @@
             android:textSize="23dp" />
 
         <TextView
+            android:id="@+id/tv_Baseactivity_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
             android:layout_weight="1"
-            android:onClick="cancel"
             android:padding="2dp"
             android:text="退出"
             android:textColor="#ffffff"

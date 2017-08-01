@@ -126,13 +126,13 @@
         android:background="#ffffff"
         android:orientation="vertical">
 
-        <TableLayout
+        <android.support.design.widget.TabLayout
           android:id="@+id/tl_activity_food"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </TableLayout>
+        </android.support.design.widget.TabLayout>
 
         <View
             android:layout_width="wrap_content"
@@ -141,6 +141,7 @@
             android:background="@android:color/darker_gray" />
 
         <android.support.v4.view.ViewPager
+            android:id="@+id/vp_activity_food"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
