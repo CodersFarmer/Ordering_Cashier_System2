@@ -7,41 +7,38 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.HeyGuo.android.R;
-import com.HeyGuo.android.ui.activity.MainActivity;
-
 import java.util.List;
 
 /**
  * Author：YQZ
  * Time：  2017/8/1
  * Email： 17600116624@163.com
- * Content:
+ * Content:diyi
  */
 public class Adapter01 extends BaseAdapter implements View.OnClickListener {
     List<String> titles1;
     private LayoutInflater mInflater;
     private Callback mCallback;
-
+    /**
+     * 自定义接口，用于回调按钮点击事件到Activity
+     *
+     * @author Ivan Xu
+     *
+     */
+    public interface Callback {
+        public void click(View v);
+    }
     @Override
     public void onClick(View v) {
         mCallback.click(v);
     }
-
-    /**
-     25      * 自定义接口，用于回调按钮点击事件到Activity
-     26      * @author Ivan Xu
-     27      * 2014-11-26
-     28      */
-     public interface Callback {
-         public void click(View v);
-    }
-    public Adapter01(List<String> s, Context context, Callback callback){
+    public Adapter01(List<String> s, Context context, Callback callback) {
         this.titles1 = s;
         mInflater = LayoutInflater.from(context);
         this.mCallback = callback;
     }
+
     @Override
     public int getCount() {
         return titles1.size();
@@ -59,7 +56,7 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       ViewHolder viewHolder;
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.activity_tabs_item, null);
@@ -83,6 +80,7 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
         viewHolder.button3.setText(titles1.get(position));
         return convertView;
     }
+
     private static class ViewHolder {
         private TextView textView1;
         private TextView textView2;

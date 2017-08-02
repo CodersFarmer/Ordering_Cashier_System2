@@ -43,16 +43,18 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //往容器里面添加布局
-        view = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main,null);
-        BaseActivity.frameLayout.addView(view);
+    }
+
+    @Override
+    protected void initFalseData() {
+        //模拟数据
         for(int i = 0;i < titles1.length;i ++){
             list.add(titles1[i]);
         }
-        horizontalListView1 = (HorizontalListView) findViewById(R.id.hl_tab01);
-        horizontalListView2 = (HorizontalListView) findViewById(R.id.hl_tab02);
-        linearLayout1 = (LinearLayout) findViewById(R.id.ll_acticity_content);
-        linearLayout2 = (LinearLayout) findViewById(R.id.ll_activity_num_header);
+    }
+
+    @Override
+    protected void initOtherEvent() {
         horizontalListView1.setAdapter(new Adapter01(list,MainActivity.this,MainActivity.this));
         horizontalListView1.setOnItemClickListener(this);
         horizontalListView2.setAdapter(new BaseAdapter() {
@@ -97,13 +99,26 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             }
         });
     }
-    //条目点击事件
+
+    @Override
+    protected void initOtherView() {
+        horizontalListView1 = (HorizontalListView) findViewById(R.id.hl_tab01);
+        horizontalListView2 = (HorizontalListView) findViewById(R.id.hl_tab02);
+        linearLayout1 = (LinearLayout) findViewById(R.id.ll_acticity_content);
+        linearLayout2 = (LinearLayout) findViewById(R.id.ll_activity_num_header);
+    }
+
+    @Override
+    public View addOtherView() {
+        //往容器里面添加布局
+        view = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main,null);
+        return view;
+    }
+
+    //条目点击事件 跳转到订单详情界面
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            switch (view.getId()){
 
-
-            }
     }
     //条目里面的按钮的点击事件，利用接口回调
     @Override
@@ -121,7 +136,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
         }
     }
-
     private static class ViewHolder {
         private TextView textView1;
         private TextView textView2;

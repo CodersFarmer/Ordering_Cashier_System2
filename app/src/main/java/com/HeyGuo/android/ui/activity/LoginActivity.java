@@ -20,7 +20,7 @@ public class LoginActivity extends BaseActivity2 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        LoginActivity.control = true;
     }
     //登陆
     public void login(View view){

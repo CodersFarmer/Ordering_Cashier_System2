@@ -19,7 +19,7 @@ import com.HeyGuo.android.utils.ActivityCollector;
  * Author：YQZ
  * Time：  2017/7/31
  * Email： 17600116624@163.com
- * Content:可以实现或取消点击两次返回才退出界面,初始化屏幕方向
+ * Content:可以实现或取消点击两次返回才退出界面,初始化屏幕方向,没有默认的头布局
  */
 public abstract class BaseActivity2 extends AppCompatActivity {
     //退出时的时间

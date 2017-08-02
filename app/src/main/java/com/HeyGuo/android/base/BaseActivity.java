@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +22,7 @@ import com.HeyGuo.android.utils.ActivityCollector;
  * Email： 17600116624@163.com
  * Content:有点击两次返回才退出界面,初始化屏幕方向，有默认的头布局
  */
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     //退出时的时间
     private long mExitTime = 0;
     //初始屏幕的状态   默认是横屏
@@ -33,6 +32,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     //容器
     public static FrameLayout frameLayout;
     TextView cancel;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +43,30 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         initScreenOrientation(state);
         //控制activity
         ActivityCollector.addActivityS(this);
+        //初始化头布局的按钮
         initView();
+        //往容器里面加载其他子界面布局
+        BaseActivity.frameLayout.addView(addOtherView());
+        //初始其他子界面布局的按钮
+        initOtherView();
+        //初始化头布局按钮的点击事件
         initEvent();
+        //加载模拟数据
+        initFalseData();
+        //初始其他子界面布局按钮的点击事件
+        initOtherEvent();
     }
+
+    protected abstract void initFalseData();
+
+    //初始其他子界面布局按钮的点击事件
+    protected abstract void initOtherEvent();
+
+    //加载其他子界面布局
+    protected abstract void initOtherView();
+
+    //在容器里面加载子布局界面
+    public abstract View addOtherView();
 
     private void initEvent() {
         cancel.setOnClickListener(this);
@@ -55,6 +76,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         frameLayout = (FrameLayout) findViewById(R.id.activity_base_container);
         cancel = (TextView) findViewById(R.id.tv_Baseactivity_cancel);
+
     }
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
@@ -68,7 +90,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
         }
     }
-
     private void initStatus() {
         //android系统为5.0及以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -92,8 +113,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onKeyDown(keyCode, event);
     }
-
-    //退出
+    //退出键
     public void exit(boolean b) {
         if (b) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
@@ -106,19 +126,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
     }
-
     //销毁时，清除集合
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
     }
-
+    //点击事件
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_Baseactivity_cancel:
-                Toast.makeText(getApplicationContext(),"我是Base指令",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "我是Base指令", Toast.LENGTH_LONG).show();
                 break;
         }
     }
