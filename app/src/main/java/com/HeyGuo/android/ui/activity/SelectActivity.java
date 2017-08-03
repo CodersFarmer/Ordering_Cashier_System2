@@ -2,6 +2,7 @@ package com.HeyGuo.android.ui.activity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -110,5 +111,9 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
                 }
                 break;
         }
+    }
+    public void submit(View view){
+        Intent intent = new Intent(this,CheckOutActivity.class);
+        startActivity(intent);
     }
 }

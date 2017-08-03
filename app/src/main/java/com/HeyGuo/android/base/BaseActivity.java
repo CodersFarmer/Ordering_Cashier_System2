@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.HeyGuo.android.R;
 import com.HeyGuo.android.utils.ActivityCollector;
 
@@ -81,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
         //获取设备当前方向
-        int currentScreenOrientation = getResources().getConfiguration().orientation;
+        //int currentScreenOrientation = getResources().getConfiguration().orientation;
         if (state) {
             //横屏
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -135,10 +134,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     //点击事件
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_Baseactivity_cancel:
-                Toast.makeText(getApplicationContext(), "我是Base指令", Toast.LENGTH_LONG).show();
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.tv_Baseactivity_cancel:
+//                Toast.makeText(getApplicationContext(), "我是Base指令", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
  * Author：YQZ
  * Time：  2017/8/2
  * Email： 17600116624@163.com
- * Content:
+ * Content:添加食物的适配器
  */
 public class ListViewAdapter02 extends BaseAdapter implements View.OnClickListener{
     List<String> titles1;

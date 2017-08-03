@@ -14,6 +14,7 @@
         android:id="@+id/ll_activity_order_data"
         layout="@layout/activity_order_data"
         android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/ll_acticity_content"
         android:layout_width="match_parent"
@@ -22,14 +23,16 @@
         //主页的内容
         <View
             android:layout_width="match_parent"
-            android:layout_height="30dp" />
+            android:layout_height="20dp" />
+
         <com.HeyGuo.android.widget.HorizontalListView
             android:id="@+id/hl_tab01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:visibility="visible"></com.HeyGuo.android.widget.HorizontalListView>
+            android:visibility="gone">
+        </com.HeyGuo.android.widget.HorizontalListView>
 
         <com.HeyGuo.android.widget.HorizontalListView
             android:id="@+id/hl_tab02"
@@ -37,6 +40,19 @@
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:visibility="visible"></com.HeyGuo.android.widget.HorizontalListView>
+            android:visibility="gone">
+        </com.HeyGuo.android.widget.HorizontalListView>
+
+        <GridView
+            android:visibility="visible"
+            android:id="@+id/gv_activity_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:horizontalSpacing="10dp"
+            android:numColumns="4"
+            android:verticalSpacing="10dp">
+
+        </GridView>
     </LinearLayout>
 </FrameLayout>

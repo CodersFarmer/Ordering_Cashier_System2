@@ -28,7 +28,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     private boolean state = true;
     //控制返回键功能的变量
     public static boolean control = true;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +38,10 @@ public abstract class BaseActivity2 extends AppCompatActivity {
         //控制activity
         ActivityCollector.addActivityS(this);
     }
-
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
         //获取设备当前方向
-        int currentScreenOrientation = getResources().getConfiguration().orientation;
+        //int currentScreenOrientation = getResources().getConfiguration().orientation;
         if (state) {
             //横屏
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -52,7 +50,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
         }
     }
-
     private void initStatus() {
         //android系统为5.0及以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -66,7 +63,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
     }
-
     //实现点击两次返回键退出
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -76,7 +72,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
     //退出
     public void exit(boolean b) {
         if (b) {
@@ -90,7 +85,6 @@ public abstract class BaseActivity2 extends AppCompatActivity {
             finish();
         }
     }
-
     //销毁时，清除集合
     @Override
     protected void onDestroy() {

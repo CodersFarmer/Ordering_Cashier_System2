@@ -1,6 +1,5 @@
 package com.HeyGuo.android.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,12 @@ import com.HeyGuo.android.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+*
+*@author Mr.Yang
+*@time 2017/8/3 14:02
+*content:结账的界面
+*/
 public class CheckOutActivity extends BaseActivity {
     View view;
     Spinner spinner;

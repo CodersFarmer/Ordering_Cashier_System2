@@ -10,10 +10,9 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:orientation="vertical">
         //点餐情况界面
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +26,7 @@
                 android:background="@drawable/edittext_shape_gray">
 
                 <TextView
+                    android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="A1"
@@ -43,11 +43,12 @@
                     android:textSize="20dp" />
 
                 <Button
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_alignParentRight="true"
                     android:layout_margin="5dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/edittext_shape_white"
                     android:text="返回"
                     android:textColor="#000000"
@@ -72,14 +73,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="# 菜品"
+                        android:text="#     菜品"
                         android:textColor="#000000"
                         android:textSize="16dp" />
 
                     <TextView
+                        android:layout_marginRight="30dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -108,6 +111,8 @@
         </LinearLayout>
 
         <TextView
+            android:onClick="submit"
+            android:textSize="16dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="10dp"

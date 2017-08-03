@@ -13,8 +13,7 @@ import java.util.Map;
  * Content:关于操作sp的工具类
  */
 public class SpUtils {
-    public static String FILLNAME = "config";
-
+    public static String FILLNAME = "SharePreference_data";
     /**
      * 存入某个key对应的value值
      *

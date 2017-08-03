@@ -14,7 +14,7 @@ import com.HeyGuo.android.base.BaseActivity2;
 *@time 2017/7/31 12:06
 *content:登陆界面    可以实现点击两次退出
 */
-public class LoginActivity extends BaseActivity2 {
+public class LoginActivity extends BaseActivity2 implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +26,10 @@ public class LoginActivity extends BaseActivity2 {
     public void login(View view){
         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

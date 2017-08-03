@@ -23,8 +23,6 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
     /**
      * 自定义接口，用于回调按钮点击事件到Activity
      *
-     * @author Ivan Xu
-     *
      */
     public interface Callback {
         public void click(View v);
@@ -74,10 +72,20 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
         viewHolder.textView1.setOnClickListener(this);
         viewHolder.textView1.setTag(position);
         viewHolder.textView2.setText(titles1.get(position));
+        viewHolder.textView2.setOnClickListener(this);
+        viewHolder.textView2.setTag(position);
         viewHolder.textView3.setText(titles1.get(position));
+        viewHolder.textView3.setOnClickListener(this);
+        viewHolder.textView3.setTag(position);
         viewHolder.button1.setText(titles1.get(position));
+        viewHolder.button1.setOnClickListener(this);
+        viewHolder.button1.setTag(position);
         viewHolder.button2.setText(titles1.get(position));
+        viewHolder.button2.setOnClickListener(this);
+        viewHolder.button2.setTag(position);
         viewHolder.button3.setText(titles1.get(position));
+        viewHolder.button3.setOnClickListener(this);
+        viewHolder.button3.setTag(position);
         return convertView;
     }
 

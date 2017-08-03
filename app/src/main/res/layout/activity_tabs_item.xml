@@ -6,11 +6,11 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:layout_width="380dp"
-        android:layout_height="230dp"
+        android:layout_width="240dp"
+        android:layout_height="200dp"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#FF0000"
-        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#008B00"
+        app:cardCornerRadius="2dp"
         app:cardElevation="2dp">
 
         <LinearLayout
@@ -21,7 +21,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/tabs_tv_id"
@@ -29,19 +29,19 @@
                     android:layout_height="wrap_content"
                     android:text="A1号桌"
                     android:textColor="#ffffff"
-                    android:textSize="30dp" />
+                    android:textSize="20dp" />
 
                 <Button
                     android:id="@+id/tabs_bt_tabsState"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:background="@drawable/tabs_bt_selector"
                     android:text="用餐情况"
                     android:textColor="#000000"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
             </RelativeLayout>
 
             <View
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:text="用餐中 2人 / ￥ 16.00"
                     android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/tabs_tv_time"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="用餐时间 2 分"
                     android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <RelativeLayout
@@ -80,24 +80,24 @@
 
                 <Button
                     android:id="@+id/tabs_bt_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/tabs_bt_selector"
                     android:text="加菜"
                     android:textColor="#000000"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <Button
                     android:id="@+id/tabs_bt_submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:background="@drawable/tabs_bt_selector"
                     android:text="结账"
                     android:textColor="#000000"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
             </RelativeLayout>
         </LinearLayout>
 

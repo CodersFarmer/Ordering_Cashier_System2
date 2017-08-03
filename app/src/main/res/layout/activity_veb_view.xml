@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.HeyGuo.android.ui.activity.WebViewActivity">
+    tools:context="com.HeyGuo.android.demo.WebViewActivity">
 
     <WebView
         android:id="@+id/wv_show"

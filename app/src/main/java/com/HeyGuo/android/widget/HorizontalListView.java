@@ -21,7 +21,6 @@ import java.util.Queue;
  * Content:一个横向滑动的listview
  */
 public class HorizontalListView extends AdapterView<ListAdapter> {
-
     public boolean mAlwaysOverrideTouch = true;
     protected ListAdapter mAdapter;
     private int mLeftViewIndex = -1;
