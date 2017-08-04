@@ -1,9 +1,11 @@
 package com.HeyGuo.android.base;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -76,10 +78,11 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     public void exit(boolean b) {
         if (b) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                Toast.makeText(BaseActivity2.this, "再按一次退出嘿果点餐管理系统！", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(BaseActivity2.this, "再按一次退出嘿果点餐管理系统！", Toast.LENGTH_SHORT).show();
+                showToast(BaseActivity2.this, "再按一次退出嘿果点餐管理系统！", 1000);
                 mExitTime = System.currentTimeMillis();
             } else {
-                finish();
+                ActivityCollector.finishAll();
             }
         } else {
             finish();
@@ -90,5 +93,19 @@ public abstract class BaseActivity2 extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
+    }
+    public static void showToast(final Activity activity, final String word, final long time){
+        activity.runOnUiThread(new Runnable() {
+            public void run() {
+                final Toast toast = Toast.makeText(activity, word, Toast.LENGTH_LONG);
+                toast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, time);
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ package com.HeyGuo.android.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,22 +45,19 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     List<String> list2 = new ArrayList<>();
     String[] titles1 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
     String[] titles2 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
-
-
     MyListView listView01;
     List<String> list03;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BaseActivity.control = true;
         initOrder();
 
-
     }
-
     private void initOrder() {
         list03 = new ArrayList<>();
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= 2; i++) {
             list03.add("item" + i);
         }
         listView01 = (MyListView) findViewById(R.id.lv_parent);
@@ -129,7 +127,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             }
         });
     }
-
     @Override
     protected void initFalseData() {
         //模拟数据
@@ -140,7 +137,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             list2.add(titles2[i + 5]);
         }
     }
-
     @Override
     protected void initOtherEvent() {
         horizontalListView1.setAdapter(new Adapter01(list, MainActivity.this, MainActivity.this));
@@ -149,7 +145,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         gv.setAdapter(new Adapter01(list, MainActivity.this, MainActivity.this));
         bt_num_can.setOnClickListener(this);
     }
-
     @Override
     protected void initOtherView() {
         horizontalListView1 = (HorizontalListView) findViewById(R.id.hl_tab01);
@@ -160,20 +155,17 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         gv = (GridView) findViewById(R.id.gv_activity_tabs);
         bt_num_can = (Button) findViewById(R.id.bt_num_cancel);
     }
-
     @Override
     public View addOtherView() {
         //往容器里面添加布局
         view = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main, null);
         return view;
     }
-
     //条目点击事件 跳转到订单详情界面
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
-
     //条目里面的按钮的点击事件，利用接口回调
     @Override
     public void click(View v) {
@@ -195,6 +187,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                         linearLayout1.setVisibility(View.GONE);
                         linearLayout2.setVisibility(View.GONE);
                         linearLayout3.setVisibility(View.VISIBLE);
+
                         break;
                 }
                 break;
@@ -229,7 +222,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
         }
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -243,18 +235,16 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
         }
     }
-
     //fu
     private static class ViewHolder {
         private MyListView listView03;
         private TextView textView;
     }
-
     //zi
     private static class ViewHolder02 {
         private TextView textView01;
         private TextView textView02;
-
     }
+
 }
 

@@ -6,10 +6,9 @@ import com.HeyGuo.android.bean.User;
  * Author：YQZ
  * Time：  2017/8/3
  * Email： 17600116624@163.com
- * Content:
+ * Content:对登陆成功和失败的监听
  */
 public interface OnLoginListener {
     void loginSuccess(User user);
-
     void loginFailed();
 }

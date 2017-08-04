@@ -1,7 +1,6 @@
 package com.HeyGuo.android.ui.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,9 +15,7 @@ import android.widget.Toast;
 import com.HeyGuo.android.R;
 import com.HeyGuo.android.adapter.ListViewAdapter02;
 import com.HeyGuo.android.base.BaseActivity;
-import com.HeyGuo.android.ui.fragment.fragment1;
-import com.HeyGuo.android.ui.fragment.fragment2;
-import com.HeyGuo.android.ui.fragment.fragment3;
+import com.HeyGuo.android.ui.fragment.FoodFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,44 +24,46 @@ import java.util.List;
  * @author Mr.Yang
  * @time 2017/8/1 14:07
  * content:点餐界面
+ * TODO：根据食物的种类和具体的信息
+ * 要能创建对应的fragment
+ * Solve：创建一个基类，在for循环里面遍历创建,在构造方法里面传递食物的名称和数量的map集合
  */
 public class SelectActivity extends BaseActivity implements View.OnClickListener, ListViewAdapter02.Callback {
     TabLayout tabLayout;
     ViewPager viewPager;
     View view;
-    Fragment fragment01;
-    Fragment fragment02;
-    Fragment fragment03;
+    FoodFragment fragment01;
     ListView listView;
     List<Fragment> list01;
     List<String> list02;
     List<String> list03;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //不实现点击两次退出界面
-        BaseActivity.control = true;
+        BaseActivity.control = false;
     }
+
     @Override
     protected void initFalseData() {
         //模拟的食物
-        fragment01 = new fragment1();
-        fragment02 = new fragment2();
-        fragment03 = new fragment3();
         list01 = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            fragment01 = new FoodFragment();
+            list01.add(fragment01);
+        }
         list02 = new ArrayList<>();
         list03 = new ArrayList<>();
-        list01.add(fragment01);
-        list01.add(fragment02);
-        list01.add(fragment03);
         list02.add("01");
         list02.add("02");
         list02.add("03");
         for (int i = 0; i <= 20; i++) {
-            list03.add("item" + i);
+            list03.add("水果" + i);
         }
     }
+
     @Override
     protected void initOtherEvent() {
         //食物信息
@@ -73,18 +72,21 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
             public android.support.v4.app.Fragment getItem(int position) {
                 return list01.get(position);
             }
+
             @Override
             public int getCount() {
                 return list01.size();
             }
+
             @Override
             public CharSequence getPageTitle(int position) {
-                return "Page" + list02.get(position);
+                return "水果" + list02.get(position);
             }
         });
         //食物选择信息
         listView.setAdapter(new ListViewAdapter02(list03, SelectActivity.this, SelectActivity.this));
     }
+
     @Override
     protected void initOtherView() {
         tabLayout = (TabLayout) findViewById(R.id.tl_activity_food);
@@ -93,12 +95,14 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         listView = (ListView) findViewById(R.id.lv_activity_food);
     }
+
     @Override
     public View addOtherView() {
         //填充内容
         view = LayoutInflater.from(SelectActivity.this).inflate(R.layout.activity_select, null);
         return view;
     }
+
     //条目中按钮的点击事件
     @Override
     public void click(View v) {
@@ -106,14 +110,20 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
             case R.id.food_tv_name:
                 switch ((int) v.getTag()) {
                     case 0:
-                        Toast.makeText(SelectActivity.this,"我是第"+v.getTag()+"条数据！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectActivity.this, "我是第" + v.getTag() + "条数据！", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 break;
         }
     }
-    public void submit(View view){
-        Intent intent = new Intent(this,CheckOutActivity.class);
+
+    public void submit(View view) {
+        Intent intent = new Intent(this, CheckOutActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

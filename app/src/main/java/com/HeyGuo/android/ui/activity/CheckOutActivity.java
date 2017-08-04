@@ -28,7 +28,7 @@ public class CheckOutActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        BaseActivity.control = false;
     }
 
     @Override

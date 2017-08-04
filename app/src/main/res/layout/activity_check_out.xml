@@ -193,7 +193,7 @@
                     android:textSize="18dp" />
 
                 <Spinner
-
+                    android:background="@drawable/edittext_shape_gray_no"
                     android:id="@+id/sp_activity_discount"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="10dp"

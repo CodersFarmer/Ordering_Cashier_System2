@@ -8,7 +8,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <com.HeyGuo.android.widget.MyListView
             android:id="@+id/lv_parent"
             android:layout_width="match_parent"

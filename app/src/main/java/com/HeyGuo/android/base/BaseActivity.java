@@ -1,16 +1,17 @@
 package com.HeyGuo.android.base;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.HeyGuo.android.R;
 import com.HeyGuo.android.utils.ActivityCollector;
@@ -21,7 +22,7 @@ import com.HeyGuo.android.utils.ActivityCollector;
  * Email： 17600116624@163.com
  * Content:有点击两次返回才退出界面,初始化屏幕方向，有默认的头布局
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
     //退出时的时间
     private long mExitTime = 0;
     //初始屏幕的状态   默认是横屏
@@ -30,8 +31,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public static boolean control = true;
     //容器
     public static FrameLayout frameLayout;
-    TextView cancel;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,16 +65,25 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     //在容器里面加载子布局界面
     public abstract View addOtherView();
-
+    //点击事件
     private void initEvent() {
-        cancel.setOnClickListener(this);
-    }
 
+    }
+    //刷新
+    public void refresh(View v){
+        Toast.makeText(BaseActivity.this,"我是刷新",Toast.LENGTH_SHORT).show();
+    }
+    //刷新
+    public void superManager(View v){
+        Toast.makeText(BaseActivity.this,"我是超级管理员",Toast.LENGTH_SHORT).show();
+    }
+    //刷新
+    public void quit(View v){
+        Toast.makeText(BaseActivity.this,"我是退出",Toast.LENGTH_SHORT).show();
+    }
     //初始化布局
     private void initView() {
         frameLayout = (FrameLayout) findViewById(R.id.activity_base_container);
-        cancel = (TextView) findViewById(R.id.tv_Baseactivity_cancel);
-
     }
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
@@ -89,6 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
         }
     }
+    //初始化状态栏
     private void initStatus() {
         //android系统为5.0及以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -102,7 +111,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
     }
-
     //实现点击两次返回键退出
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -116,10 +124,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void exit(boolean b) {
         if (b) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                Toast.makeText(BaseActivity.this, "再按一次退出嘿果点餐管理系统！", Toast.LENGTH_SHORT).show();
+                showToast(BaseActivity.this, "再按一次退出嘿果点餐管理系统！", 3000);
                 mExitTime = System.currentTimeMillis();
             } else {
-                finish();
+                ActivityCollector.finishAll();
             }
         } else {
             finish();
@@ -131,13 +139,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         super.onDestroy();
         ActivityCollector.removeActivity(this);
     }
-    //点击事件
-    @Override
-    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.tv_Baseactivity_cancel:
-//                Toast.makeText(getApplicationContext(), "我是Base指令", Toast.LENGTH_SHORT).show();
-//                break;
-//        }
+    public static void showToast(final Activity activity, final String word, final long time){
+        activity.runOnUiThread(new Runnable() {
+            public void run() {
+                final Toast toast = Toast.makeText(activity, word, Toast.LENGTH_LONG);
+                toast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, time);
+            }
+        });
     }
 }
