@@ -27,8 +27,7 @@ public class RetreatFoodActivity extends BaseActivity implements ListViewAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //不实现点击两次退出界面
-        BaseActivity.control = false;
+
     }
 
     @Override
@@ -52,6 +51,11 @@ public class RetreatFoodActivity extends BaseActivity implements ListViewAdapter
     public View addOtherView() {
         view = LayoutInflater.from(RetreatFoodActivity.this).inflate(R.layout.activity_retreat_food, null);
         return view;
+    }
+
+    @Override
+    public boolean setControl() {
+        return false;
     }
 
     @Override

@@ -2,18 +2,19 @@ package com.HeyGuo.android.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.HeyGuo.android.R;
-import com.HeyGuo.android.base.BaseActivity;
 import com.HeyGuo.android.base.BaseActivity2;
-import com.HeyGuo.android.bean.User;
+import com.HeyGuo.android.db.User;
 import com.HeyGuo.android.mvp.presenter.LoginActivityPresenter;
 import com.HeyGuo.android.mvp.view.LoginActivityView;
+
+import org.litepal.crud.DataSupport;
 
 /**
  * @author Mr.Yang
@@ -26,7 +27,6 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     public EditText et_username;
     public EditText et_password;
     public TextView tv_onlogin;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     @Override
     public String getStoreId() {
         String storeid = et_storename.getText().toString().trim();
-        if (!storeid.isEmpty()) {
+        if (!TextUtils.isEmpty(storeid)) {
             return storeid;
         }else {
             Toast.makeText(this, "请检查您的店铺号，不能为空", Toast.LENGTH_SHORT).show();
@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     @Override
     public String getUserName() {
         String username = et_username.getText().toString().trim();
-        if (!username.isEmpty()) {
+        if (!TextUtils.isEmpty(username)) {
             return username;
         }else {
             Toast.makeText(this, "请检查您的账号，不能为空", Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     @Override
     public String getPassword() {
         String password = et_password.getText().toString().trim();
-        if (!password.isEmpty()) {
+        if (!TextUtils.isEmpty(password)) {
             return password;
         }else {
             Toast.makeText(this, "请检查您的密码，不能为空", Toast.LENGTH_SHORT).show();
@@ -85,14 +85,13 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     public void hideLoading() {
         tv_onlogin.setVisibility(View.GONE);
     }
-
     @Override
     public void toMainActivity(User user) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("username", user.getUsername());
         startActivity(intent);
+        DataSupport.findAll(User.class);
     }
-
     @Override
     public void showFailedError() {
         Toast.makeText(this, "登陆失败，请检查您的账号和密码", Toast.LENGTH_SHORT).show();

@@ -12,24 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity" >
+        <activity android:name=".ui.activity.MainActivity">
 
         </activity>
-        <activity android:name=".ui.activity.LoginActivity">
+        <activity android:name=".ui.activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>>
         <activity android:name=".demo.WebViewActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".ui.activity.SelectActivity" />
-        <activity android:name=".ui.activity.CheckOutActivity"></activity>
-        <activity android:name=".ui.activity.RetreatFoodActivity"></activity>
-        <activity android:name=".demo.ListViewNestActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.CheckOutActivity" />
+        <activity android:name=".ui.activity.RetreatFoodActivity" />
+        <activity android:name=".demo.ListViewNestActivity" />
+        <activity android:name=".ui.activity.OrderDataActivity" />
     </application>
 
 </manifest>

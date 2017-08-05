@@ -2,7 +2,7 @@ package com.HeyGuo.android.mvp.presenter;
 
 import android.os.Handler;
 
-import com.HeyGuo.android.bean.User;
+import com.HeyGuo.android.db.User;
 import com.HeyGuo.android.mvp.model.OnLoginListener;
 import com.HeyGuo.android.mvp.model.UserLoginIm;
 import com.HeyGuo.android.mvp.view.LoginActivityView;

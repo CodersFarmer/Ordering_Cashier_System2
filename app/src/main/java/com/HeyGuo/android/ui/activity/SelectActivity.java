@@ -42,10 +42,7 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //不实现点击两次退出界面
-        BaseActivity.control = false;
     }
-
     @Override
     protected void initFalseData() {
         //模拟的食物
@@ -63,7 +60,6 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
             list03.add("水果" + i);
         }
     }
-
     @Override
     protected void initOtherEvent() {
         //食物信息
@@ -101,6 +97,11 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         //填充内容
         view = LayoutInflater.from(SelectActivity.this).inflate(R.layout.activity_select, null);
         return view;
+    }
+
+    @Override
+    public boolean setControl() {
+        return false;
     }
 
     //条目中按钮的点击事件

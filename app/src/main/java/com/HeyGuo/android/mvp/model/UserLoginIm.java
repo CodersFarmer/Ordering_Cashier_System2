@@ -1,8 +1,6 @@
 package com.HeyGuo.android.mvp.model;
 
-import android.os.SystemClock;
-
-import com.HeyGuo.android.bean.User;
+import com.HeyGuo.android.db.User;
 
 /**
  * Author：YQZ

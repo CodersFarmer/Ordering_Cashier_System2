@@ -29,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean state = true;
     //控制返回键功能的变量
     public static boolean control = true;
+    public static boolean othercontrol = false;
     //容器
     public static FrameLayout frameLayout;
     @Override
@@ -84,6 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     //初始化布局
     private void initView() {
         frameLayout = (FrameLayout) findViewById(R.id.activity_base_container);
+
     }
     //初始化屏幕的方向
     private void initScreenOrientation(boolean state) {
@@ -115,14 +117,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            exit(control);
+            exit(control,othercontrol);
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
     //退出键
-    public void exit(boolean b) {
-        if (b) {
+    public void exit(boolean b,boolean b1) {
+        if (setControl()) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
                 showToast(BaseActivity.this, "再按一次退出嘿果点餐管理系统！", 3000);
                 mExitTime = System.currentTimeMillis();
@@ -133,6 +135,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             finish();
         }
     }
+    //是否开启点击两次退出功能
+    public abstract boolean setControl();
     //销毁时，清除集合
     @Override
     protected void onDestroy() {

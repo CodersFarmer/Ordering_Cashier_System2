@@ -14,7 +14,7 @@ import java.util.List;
  * Author：YQZ
  * Time：  2017/8/1
  * Email： 17600116624@163.com
- * Content:diyi
+ * Content:首页桌数的CardView的适配器
  */
 public class Adapter01 extends BaseAdapter implements View.OnClickListener {
     List<String> titles1;
@@ -88,7 +88,6 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
         viewHolder.button3.setTag(position);
         return convertView;
     }
-
     private static class ViewHolder {
         private TextView textView1;
         private TextView textView2;

@@ -1,11 +1,6 @@
 package com.HeyGuo.android;
-
 import android.app.Application;
-
-import com.HeyGuo.android.bean.User;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.litepal.LitePalApplication;
 
 /**
  * Author：YQZ
@@ -18,5 +13,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //初始化LitePalApplication
+        LitePalApplication.initialize(this);
     }
 }

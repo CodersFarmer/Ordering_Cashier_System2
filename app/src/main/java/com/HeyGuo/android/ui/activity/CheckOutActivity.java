@@ -28,7 +28,6 @@ public class CheckOutActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BaseActivity.control = false;
     }
 
     @Override
@@ -67,5 +66,10 @@ public class CheckOutActivity extends BaseActivity {
     public View addOtherView() {
         view = LayoutInflater.from(CheckOutActivity.this).inflate(R.layout.activity_check_out, null);
         return view;
+    }
+
+    @Override
+    public boolean setControl() {
+        return false;
     }
 }

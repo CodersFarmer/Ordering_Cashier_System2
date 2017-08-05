@@ -1,32 +1,38 @@
-package com.HeyGuo.android.demo;
+package com.HeyGuo.android.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.HeyGuo.android.R;
+import com.HeyGuo.android.base.BaseActivity;
 import com.HeyGuo.android.widget.MyListView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 /**
-*
-*@author Mr.Yang
-*@time 2017/8/3 11:47
-*content:解决了listView的双重嵌套问题
- * 滑动问题的话，自定义一个listview，屏蔽其滑动的方法，在外面嵌套一个scrollview
-*/
-public class ListViewNestActivity extends AppCompatActivity {
+ * Author：YQZ
+ * Time：  2017/8/5
+ * Email： 17600116624@163.com
+ * Content:订单数据的界面
+ */
+public class OrderDataActivity extends BaseActivity {
+    private LayoutInflater mLayoutInflater;
     MyListView listView01;
     List<String> list03;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view_nest);
+        initOrder();
+    }
+    private void initOrder() {
         list03 = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 5; i++) {
             list03.add("item" + i);
         }
         listView01 = (MyListView) findViewById(R.id.lv_parent);
@@ -48,7 +54,7 @@ public class ListViewNestActivity extends AppCompatActivity {
                 ViewHolder holder = null;
                 if (convertView == null) {
                     holder = new ViewHolder();
-                    convertView = LayoutInflater.from(ListViewNestActivity.this).inflate(R.layout.lv_parent_item, null);
+                    convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.lv_parent_item, null);
                     holder.listView03 = (MyListView) convertView.findViewById(R.id.lv_child);
                     holder.textView = (TextView) convertView.findViewById(R.id.tv_parent);
                     convertView.setTag(holder);
@@ -74,7 +80,7 @@ public class ListViewNestActivity extends AppCompatActivity {
                         ViewHolder02 holder02 = null;
                         if (convertView == null) {
                             holder02 = new ViewHolder02();
-                            convertView = LayoutInflater.from(ListViewNestActivity.this).inflate(R.layout.lv_child_item, null);
+                            convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.lv_child_item, null);
                             holder02.textView01 = (TextView) convertView.findViewById(R.id.tv_header);
                             holder02.textView02 = (TextView) convertView.findViewById(R.id.tv_footer);
                             convertView.setTag(holder02);
@@ -99,6 +105,32 @@ public class ListViewNestActivity extends AppCompatActivity {
     private static class ViewHolder02 {
         private TextView textView01;
         private TextView textView02;
+    }
 
+    @Override
+    protected void initFalseData() {
+
+    }
+
+    @Override
+    protected void initOtherEvent() {
+
+    }
+
+    @Override
+    protected void initOtherView() {
+
+    }
+
+    @Override
+    public View addOtherView() {
+        mLayoutInflater = LayoutInflater.from(this);
+        View view = mLayoutInflater.inflate(R.layout.activity_orderdata,null);
+        return view;
+    }
+
+    @Override
+    public boolean setControl() {
+        return false;
     }
 }
