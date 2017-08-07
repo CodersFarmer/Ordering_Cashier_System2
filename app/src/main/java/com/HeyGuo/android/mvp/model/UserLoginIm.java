@@ -16,6 +16,10 @@ public class UserLoginIm implements UserLoginIf {
             @Override
             public void run()
             {
+                //进行登陆请求
+                //成功 开始计时，刷新餐桌数据；
+                //往数据库存用户、食物、餐桌、订单的数据
+                //失败，提示，重新登陆
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e)

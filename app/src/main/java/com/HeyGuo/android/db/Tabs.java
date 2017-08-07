@@ -14,11 +14,9 @@ public class Tabs extends DataSupport {
     private int num;
     private int price;
     private long time;
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }

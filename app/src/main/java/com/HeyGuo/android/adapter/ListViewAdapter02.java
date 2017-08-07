@@ -17,7 +17,10 @@ import java.util.List;
  * Author：YQZ
  * Time：  2017/8/2
  * Email： 17600116624@163.com
- * Content:添加食物的适配器
+ * Content:
+ * 添加食物的适配器
+ * 退菜的适配器，也一样
+ * 实现接口回调，处理条目里的按钮的点击事件
  */
 public class ListViewAdapter02 extends BaseAdapter implements View.OnClickListener{
     List<String> titles1;

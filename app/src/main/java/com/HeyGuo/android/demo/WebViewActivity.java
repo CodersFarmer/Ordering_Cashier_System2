@@ -15,7 +15,7 @@ import com.HeyGuo.android.R;
 *
 *@author Mr.Yang
 *@time 2017/7/29 18:40
-*content:
+*content:一个含webview的界面，加载网页，可以点击网页里面的按钮。
 */
 public class WebViewActivity extends AppCompatActivity {
     WebView webView;
@@ -25,22 +25,24 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_veb_view);
         webView = (WebView) findViewById(R.id.wv_show);
+        //让WebView支持页面的按钮可以点击
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://pos.heyguo.com/index.php/Home/Login/index.html");
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-            }
 
+            }
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-            }
 
+            }
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
+
             }
         });
     }

@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.HeyGuo.android.R;
 import com.HeyGuo.android.utils.ActivityCollector;
 
+import static com.HeyGuo.android.utils.ToastManager.showToast;
+
 /**
  * Author：YQZ
  * Time：  2017/7/31
@@ -37,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //初始化状态栏
         initStatus();
+        //加载默认的头布局
         setContentView(R.layout.activity_base);
         //初始化屏幕的方向  横屏
         initScreenOrientation(state);
@@ -117,13 +120,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            exit(control,othercontrol);
+            exit();
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
     //退出键
-    public void exit(boolean b,boolean b1) {
+    public void exit() {
         if (setControl()) {
             if ((System.currentTimeMillis() - mExitTime) > 2000) {
                 showToast(BaseActivity.this, "再按一次退出嘿果点餐管理系统！", 3000);
@@ -143,18 +146,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
     }
-    public static void showToast(final Activity activity, final String word, final long time){
-        activity.runOnUiThread(new Runnable() {
-            public void run() {
-                final Toast toast = Toast.makeText(activity, word, Toast.LENGTH_LONG);
-                toast.show();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        toast.cancel();
-                    }
-                }, time);
-            }
-        });
-    }
+
 }

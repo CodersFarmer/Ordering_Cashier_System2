@@ -19,7 +19,10 @@ import java.util.List;
  * Author：YQZ
  * Time：  2017/8/1
  * Email： 17600116624@163.com
- * Content:模拟的食物的一种信息界面
+ * Content:模拟的一种食物的信息界面
+ * TODO：在构造方法里面,传递Food集合
+ * Food集合的size就是TabLayout的适配器里Title的长度
+ * 而对应一个Food对象里面的Type集合的长度就是cardview的适配器里面的长度。
  */
 public class FoodFragment extends Fragment {
     GridView gridView;

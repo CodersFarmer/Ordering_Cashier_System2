@@ -24,7 +24,7 @@ import java.util.List;
  * @author Mr.Yang
  * @time 2017/8/1 14:07
  * content:点餐界面
- * TODO：根据食物的种类和具体的信息
+ * TODO：点击spinner的抹零条目时，会弹出对应的AlertDialog
  * 要能创建对应的fragment
  * Solve：创建一个基类，在for循环里面遍历创建,在构造方法里面传递食物的名称和数量的map集合
  */
@@ -37,8 +37,6 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
     List<Fragment> list01;
     List<String> list02;
     List<String> list03;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +60,7 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
     }
     @Override
     protected void initOtherEvent() {
-        //食物信息
+        //食物信息  包含头部信息的适配器和viewpager的适配器，展示具体的食物的详情
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public android.support.v4.app.Fragment getItem(int position) {
@@ -82,7 +80,6 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         //食物选择信息
         listView.setAdapter(new ListViewAdapter02(list03, SelectActivity.this, SelectActivity.this));
     }
-
     @Override
     protected void initOtherView() {
         tabLayout = (TabLayout) findViewById(R.id.tl_activity_food);
@@ -91,19 +88,16 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         listView = (ListView) findViewById(R.id.lv_activity_food);
     }
-
     @Override
     public View addOtherView() {
         //填充内容
         view = LayoutInflater.from(SelectActivity.this).inflate(R.layout.activity_select, null);
         return view;
     }
-
     @Override
     public boolean setControl() {
         return false;
     }
-
     //条目中按钮的点击事件
     @Override
     public void click(View v) {
@@ -117,12 +111,10 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
     }
-
     public void submit(View view) {
         Intent intent = new Intent(this, CheckOutActivity.class);
         startActivity(intent);
     }
-
     @Override
     public void onClick(View v) {
 

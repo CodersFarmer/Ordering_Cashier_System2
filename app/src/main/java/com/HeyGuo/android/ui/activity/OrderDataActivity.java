@@ -106,29 +106,24 @@ public class OrderDataActivity extends BaseActivity {
         private TextView textView01;
         private TextView textView02;
     }
-
     @Override
     protected void initFalseData() {
 
     }
-
     @Override
     protected void initOtherEvent() {
 
     }
-
     @Override
     protected void initOtherView() {
 
     }
-
     @Override
     public View addOtherView() {
         mLayoutInflater = LayoutInflater.from(this);
         View view = mLayoutInflater.inflate(R.layout.activity_orderdata,null);
         return view;
     }
-
     @Override
     public boolean setControl() {
         return false;

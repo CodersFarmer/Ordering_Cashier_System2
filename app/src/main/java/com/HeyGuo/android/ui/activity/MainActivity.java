@@ -19,7 +19,11 @@ import android.widget.Toast;
 import com.HeyGuo.android.R;
 import com.HeyGuo.android.adapter.Adapter01;
 import com.HeyGuo.android.base.BaseActivity;
+import com.HeyGuo.android.db.Tabs;
+import com.HeyGuo.android.db.User;
 import com.HeyGuo.android.widget.MyListView;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +33,6 @@ import java.util.List;
  * @author Mr.Yang
  * @time 2017/7/28 12:19
  * content:主界面   采用BaseActivity的统一头布局
- * TODO：订餐布局的处理
  */
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, Adapter01.Callback, View.OnClickListener {
     View view;
@@ -38,20 +41,21 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     List<String> list2 = new ArrayList<>();
     String[] titles1 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
     String[] titles2 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
-/**
-*
-*@author Mr.Yang
-*@time 2017/8/5 13:54
-*content:修改屏幕的透明度
- *  WindowManager.LayoutParams lp = getWindow().getAttributes();
-    //0.0-1.0
-    lp.alpha = (float) 0.5;
-    getWindow().setAttributes(lp);
-*/
+
+    /**
+     * @author Mr.Yang
+     * @time 2017/8/5 13:54
+     * content:修改屏幕的透明度
+     * WindowManager.LayoutParams lp = getWindow().getAttributes();
+     * //0.0-1.0
+     * lp.alpha = (float) 0.5;
+     * getWindow().setAttributes(lp);
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     protected void initFalseData() {
         //模拟数据
@@ -62,14 +66,17 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             list2.add(titles2[i + 5]);
         }
     }
+
     @Override
     protected void initOtherEvent() {
         gv.setAdapter(new Adapter01(list, MainActivity.this, MainActivity.this));
     }
+
     @Override
     protected void initOtherView() {
         gv = (GridView) findViewById(R.id.gv_activity_tabs);
     }
+
     @Override
     public View addOtherView() {
         //往容器里面添加布局
@@ -77,6 +84,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         return view;
     }
 
+    //设置是否点击两下退出
     @Override
     public boolean setControl() {
         return true;
@@ -87,14 +95,22 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
     //条目里面的按钮的点击事件，利用接口回调
     @Override
     public void click(View v) {
         switch (v.getId()) {
             case R.id.tabs_tv_id:
+                //要知道是点的是那一张桌子，利用for循环，获取对应的id
+//                for(int i = 0; i < list.size(); i ++){
+//                    if(i == v.getTag()){
+//                        User user = new User();
+//                        user.setPassword("2");
+//                        user.update(i);
+//                    }
+//                }
                 switch ((int) v.getTag()) {
                     case 0:
-                        // Toast.makeText(getApplicationContext(),"我是第一张桌子",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, SelectActivity.class);
                         startActivity(intent);
                         break;
@@ -104,7 +120,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case R.id.tabs_bt_tabsState:
                 switch ((int) v.getTag()) {
                     case 0:
-                        Intent intent = new Intent(this,OrderDataActivity.class);
+                        Intent intent = new Intent(this, OrderDataActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -114,10 +130,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 switch ((int) v.getTag()) {
                     case 0:
                         // Toast.makeText(getApplicationContext(),"我是第一张桌子",Toast.LENGTH_SHORT).show();
-                        View tv = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item01,null);
+                        View tv = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item01, null);
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setCustomTitle(tv);
-                        View view = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item02,null);
+                        View view = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item02, null);
                         builder.setView(view);
                         builder.setCancelable(true);
                         builder.setPositiveButton("确认开桌", new DialogInterface.OnClickListener() {
@@ -156,16 +172,11 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
         }
     }
+
+    //MainActivity里的点击事件
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt_num_cancel:
 
-                break;
-            case R.id.tv_Baseactivity_cancel:
-                Toast.makeText(getApplicationContext(), "我是Base指令", Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 }
 

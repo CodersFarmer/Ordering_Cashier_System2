@@ -9,7 +9,8 @@ import android.widget.ListView;
  * Author：YQZ
  * Time：  2017/8/3
  * Email： 17600116624@163.com
- * Content:
+ * Content:一个获取定长的listview，主要解决listview嵌套后，父listview的子条目长度
+ * 固定，不会根据子listview的长度变化。
  */
 public class MyListView extends ListView {
     public MyListView(Context context) {

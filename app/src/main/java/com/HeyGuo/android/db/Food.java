@@ -11,20 +11,19 @@ import java.util.List;
  * Content:食物的表
  * 依据种类来分
  * 一种里的一个又具有一个唯一的id；
+ * 一个code：
  * 一个name；
  * 一个数量。
  */
 public class Food extends DataSupport {
+    private String type;
     private List<Type> typeList;
-
     public List<Type> getTypeList() {
         return typeList;
     }
-
     public void setTypeList(List<Type> typeList) {
         this.typeList = typeList;
     }
-
     private class Type {
         private int code;
         private String name;

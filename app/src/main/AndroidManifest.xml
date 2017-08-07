@@ -29,6 +29,7 @@
         <activity android:name=".ui.activity.RetreatFoodActivity" />
         <activity android:name=".demo.ListViewNestActivity" />
         <activity android:name=".ui.activity.OrderDataActivity" />
+        <service android:name=".service.AutoUpdateService"/>
     </application>
 
 </manifest>

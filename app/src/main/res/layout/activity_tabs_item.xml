@@ -21,10 +21,11 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/tabs_tv_id"
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="A1号桌"
@@ -47,7 +48,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_margin="8dp"
+                android:layout_margin="10dp"
                 android:background="#ffffff" />
             <View
                 android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/tabs_tv_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,6 +69,7 @@
                     android:textSize="15dp" />
 
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/tabs_tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,8 +82,7 @@
                 android:layout_height="10dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/tabs_bt_add"
@@ -88,6 +90,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/tabs_bt_selector"
                     android:text="加菜"
+                    android:layout_marginLeft="10dp"
                     android:textColor="#000000"
                     android:textSize="15dp" />
 
@@ -95,6 +98,7 @@
                     android:id="@+id/tabs_bt_submit"
                     android:layout_width="50dp"
                     android:layout_height="35dp"
+                    android:layout_marginRight="10dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"

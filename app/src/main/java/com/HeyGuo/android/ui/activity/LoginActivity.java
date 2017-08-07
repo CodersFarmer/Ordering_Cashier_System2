@@ -2,7 +2,9 @@ package com.HeyGuo.android.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -94,6 +96,6 @@ public class LoginActivity extends BaseActivity2 implements LoginActivityView {
     }
     @Override
     public void showFailedError() {
-        Toast.makeText(this, "登陆失败，请检查您的账号和密码", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "登陆失败，请检查您的账号和密码！", Toast.LENGTH_SHORT).show();
     }
 }
