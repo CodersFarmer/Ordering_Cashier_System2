@@ -9,7 +9,7 @@
         android:layout_width="240dp"
         android:layout_height="200dp"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#008B00"
+        app:cardBackgroundColor="#FF412C"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp">
 
@@ -52,7 +52,7 @@
                 android:background="#ffffff" />
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="5dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,6 +67,9 @@
                     android:text="用餐中 2人 / ￥ 16.00"
                     android:textColor="#ffffff"
                     android:textSize="15dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
 
                 <TextView
                     android:layout_marginLeft="10dp"
@@ -79,7 +82,7 @@
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"/>
+                android:layout_height="5dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

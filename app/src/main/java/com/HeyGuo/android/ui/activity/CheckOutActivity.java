@@ -2,6 +2,7 @@ package com.HeyGuo.android.ui.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,20 +30,22 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
     List<String> list = new ArrayList<>();
     private ArrayAdapter<String> adapter;//创建一个数组适配器
     private LayoutInflater mLayoutinflater;
-
+    Button button02;
+    Button button03;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mLayoutinflater = LayoutInflater.from(CheckOutActivity.this);
     }
-
     @Override
     protected void initFalseData() {
-        for (int i = 0; i < 7; i++) {
-            list.add("我是折扣！" + i);
-        }
-    }
+            list.add("无折扣");
+            list.add("股东折(7折)");
+            list.add("抹零" );
+            list.add("活动" );
+            list.add("免单" );
 
+    }
     @Override
     protected void initOtherEvent() {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
@@ -52,7 +55,7 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 3) {
+                if (position == 2) {
                     View view01 = mLayoutinflater.inflate(R.layout.activity_check_out_item01, null);
                     AlertDialog.Builder builder = new AlertDialog.Builder(CheckOutActivity.this);
                     builder.setCustomTitle(view01);
@@ -68,28 +71,27 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
                     builder.show();
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-
+        button01.setOnClickListener(this);
+        button02.setOnClickListener(this);
+        button03.setOnClickListener(this);
     }
-
     @Override
     protected void initOtherView() {
         spinner = (Spinner) findViewById(R.id.sp_activity_discount);
         button01 = (Button) findViewById(R.id.activity_check_out_confirm);
-        button01.setOnClickListener(this);
+        button02 = (Button) findViewById(R.id.activity_check_out_back);
+        button03 = (Button) findViewById(R.id.activity_check_out_retreat);
     }
-
     @Override
     public View addOtherView() {
         view = LayoutInflater.from(CheckOutActivity.this).inflate(R.layout.activity_check_out, null);
         return view;
     }
-
     @Override
     public boolean setControl() {
         return false;
@@ -118,9 +120,15 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
                 });
                 builder.show();
                 break;
+            //返回
+            case R.id.activity_check_out_back:
+                finish();
+                break;
+            //退菜
+            case R.id.activity_check_out_retreat:
+                Intent intent = new Intent(CheckOutActivity.this,RetreatFoodActivity.class);
+                startActivity(intent);
+                break;
         }
-
     }
-
-
 }

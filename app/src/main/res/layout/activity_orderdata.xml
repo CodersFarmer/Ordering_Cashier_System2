@@ -137,6 +137,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/activity_order_data_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -179,6 +180,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/activity_order_data_retreat"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -189,6 +191,7 @@
             android:textColor="#ffffff" />
 
         <Button
+            android:id="@+id/activity_order_data_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

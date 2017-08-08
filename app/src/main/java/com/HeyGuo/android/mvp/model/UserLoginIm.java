@@ -1,6 +1,10 @@
 package com.HeyGuo.android.mvp.model;
 
+import com.HeyGuo.android.db.Food;
+import com.HeyGuo.android.db.Tabs;
 import com.HeyGuo.android.db.User;
+
+import java.util.List;
 
 /**
  * Author：YQZ
@@ -10,6 +14,9 @@ import com.HeyGuo.android.db.User;
  * 登陆的网络耗时操作
  */
 public class UserLoginIm implements UserLoginIf {
+    List<User> userListlist;
+    List<Tabs> tabsList;
+    List<Food> foodList;
     @Override
     public void login(final String username, final String password, final String storeid, final OnLoginListener loginListener) {
         new Thread() {

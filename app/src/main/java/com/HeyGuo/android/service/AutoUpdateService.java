@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
  * Time：  2017/8/7
  * Email： 17600116624@163.com
  * Content:一个用于更新数据的服务，时间间隔是20s,主要是更新桌子的数据
+ * 把获取的数据，放在sp里面，因为是临时存放的
  */
 public class AutoUpdateService extends Service {
     @Nullable
@@ -35,6 +36,8 @@ public class AutoUpdateService extends Service {
     }
     /**
      * 更新桌子的数据
+     * 取的时候先从网络获取，如果没有，再从sp获取；
+     * 成功的话，先解析展示，然后保存进sp
      * */
     private void updateTabsData(){
 

@@ -18,5 +18,6 @@ public class Constant {
     private static final String Cancel = "";
     //结账接口
     private static final String Submit = "";
-
+    //刷新桌子信息的接口
+    private static final String Refresh = "";
 }

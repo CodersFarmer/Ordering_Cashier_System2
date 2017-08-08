@@ -36,7 +36,6 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
         mInflater = LayoutInflater.from(context);
         this.mCallback = callback;
     }
-
     @Override
     public int getCount() {
         return titles1.size();
@@ -68,22 +67,23 @@ public class Adapter01 extends BaseAdapter implements View.OnClickListener {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        //根据对应桌子的信息，进行判断后，再对桌子进行设置
         viewHolder.textView1.setText(titles1.get(position));
         viewHolder.textView1.setOnClickListener(this);
         viewHolder.textView1.setTag(position);
-        viewHolder.textView2.setText(titles1.get(position));
+        viewHolder.textView2.setText("用餐中 2人 / ￥ 16.00");
         viewHolder.textView2.setOnClickListener(this);
         viewHolder.textView2.setTag(position);
-        viewHolder.textView3.setText(titles1.get(position));
+        viewHolder.textView3.setText("用餐时间 2 分");
         viewHolder.textView3.setOnClickListener(this);
         viewHolder.textView3.setTag(position);
-        viewHolder.button1.setText(titles1.get(position));
+        viewHolder.button1.setText("用餐情况");
         viewHolder.button1.setOnClickListener(this);
         viewHolder.button1.setTag(position);
-        viewHolder.button2.setText(titles1.get(position));
+        viewHolder.button2.setText("加菜");
         viewHolder.button2.setOnClickListener(this);
         viewHolder.button2.setTag(position);
-        viewHolder.button3.setText(titles1.get(position));
+        viewHolder.button3.setText("结账");
         viewHolder.button3.setOnClickListener(this);
         viewHolder.button3.setTag(position);
         return convertView;

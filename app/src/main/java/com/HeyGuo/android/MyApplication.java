@@ -1,5 +1,7 @@
 package com.HeyGuo.android;
 import android.app.Application;
+import android.content.Context;
+
 import org.litepal.LitePalApplication;
 
 /**
@@ -10,6 +12,10 @@ import org.litepal.LitePalApplication;
  *
  */
 public class MyApplication extends Application {
+    private Context context;
+    private void getContext(){
+        this.context = getApplicationContext();
+    }
     @Override
     public void onCreate() {
         super.onCreate();

@@ -9,7 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.HeyGuo.android.R;
@@ -37,10 +39,13 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
     List<Fragment> list01;
     List<String> list02;
     List<String> list03;
+    Button button01;
+    TextView textView01;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     protected void initFalseData() {
         //模拟的食物
@@ -58,6 +63,7 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
             list03.add("水果" + i);
         }
     }
+
     @Override
     protected void initOtherEvent() {
         //食物信息  包含头部信息的适配器和viewpager的适配器，展示具体的食物的详情
@@ -79,7 +85,10 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         });
         //食物选择信息
         listView.setAdapter(new ListViewAdapter02(list03, SelectActivity.this, SelectActivity.this));
+        button01.setOnClickListener(this);
+        textView01.setOnClickListener(this);
     }
+
     @Override
     protected void initOtherView() {
         tabLayout = (TabLayout) findViewById(R.id.tl_activity_food);
@@ -87,17 +96,22 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         listView = (ListView) findViewById(R.id.lv_activity_food);
+        textView01 = (TextView) findViewById(R.id.activity_select_submit);
+        button01 = (Button) findViewById(R.id.activity_select_back);
     }
+
     @Override
     public View addOtherView() {
         //填充内容
         view = LayoutInflater.from(SelectActivity.this).inflate(R.layout.activity_select, null);
         return view;
     }
+
     @Override
     public boolean setControl() {
         return false;
     }
+
     //条目中按钮的点击事件
     @Override
     public void click(View v) {
@@ -109,14 +123,20 @@ public class SelectActivity extends BaseActivity implements View.OnClickListener
                         break;
                 }
                 break;
+
         }
     }
-    public void submit(View view) {
-        Intent intent = new Intent(this, CheckOutActivity.class);
-        startActivity(intent);
-    }
+
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.activity_select_back:
+                finish();
+                break;
+            case R.id.activity_select_submit:
+                Intent intent = new Intent(this, CheckOutActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

@@ -1,11 +1,14 @@
 package com.HeyGuo.android.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.HeyGuo.android.R;
@@ -21,15 +24,20 @@ import java.util.List;
  * Email： 17600116624@163.com
  * Content:订单数据的界面
  */
-public class OrderDataActivity extends BaseActivity {
+public class OrderDataActivity extends BaseActivity implements View.OnClickListener {
     private LayoutInflater mLayoutInflater;
     MyListView listView01;
     List<String> list03;
+    Button button01;
+    Button button02;
+    Button button03;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initOrder();
     }
+
     private void initOrder() {
         list03 = new ArrayList<>();
         for (int i = 0; i <= 5; i++) {
@@ -41,14 +49,17 @@ public class OrderDataActivity extends BaseActivity {
             public int getCount() {
                 return list03.size();
             }
+
             @Override
             public Object getItem(int position) {
                 return list03.get(position);
             }
+
             @Override
             public long getItemId(int position) {
                 return position;
             }
+
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 ViewHolder holder = null;
@@ -67,14 +78,17 @@ public class OrderDataActivity extends BaseActivity {
                     public int getCount() {
                         return list03.size();
                     }
+
                     @Override
                     public Object getItem(int position) {
                         return list03.get(position);
                     }
+
                     @Override
                     public long getItemId(int position) {
                         return position;
                     }
+
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         ViewHolder02 holder02 = null;
@@ -96,34 +110,60 @@ public class OrderDataActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_order_data_back:
+                finish();
+                break;
+            case R.id.activity_order_data_close:
+                finish();
+            case R.id.activity_order_data_retreat:
+                Intent intent = new Intent(OrderDataActivity.this, RetreatFoodActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
     //fu
     private static class ViewHolder {
         private MyListView listView03;
         private TextView textView;
     }
+
     //zi
     private static class ViewHolder02 {
         private TextView textView01;
         private TextView textView02;
     }
+
     @Override
     protected void initFalseData() {
 
     }
+
     @Override
     protected void initOtherEvent() {
-
+        button01.setOnClickListener(this);
+        button02.setOnClickListener(this);
+        button03.setOnClickListener(this);
     }
+
     @Override
     protected void initOtherView() {
-
+        button01 = (Button) findViewById(R.id.activity_order_data_back);
+        button02 = (Button) findViewById(R.id.activity_order_data_retreat);
+        button03 = (Button) findViewById(R.id.activity_order_data_close);
     }
+
     @Override
     public View addOtherView() {
         mLayoutInflater = LayoutInflater.from(this);
-        View view = mLayoutInflater.inflate(R.layout.activity_orderdata,null);
+        View view = mLayoutInflater.inflate(R.layout.activity_orderdata, null);
         return view;
     }
+
     @Override
     public boolean setControl() {
         return false;

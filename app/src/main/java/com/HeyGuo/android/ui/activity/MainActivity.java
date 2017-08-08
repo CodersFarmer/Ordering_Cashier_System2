@@ -21,6 +21,8 @@ import com.HeyGuo.android.adapter.Adapter01;
 import com.HeyGuo.android.base.BaseActivity;
 import com.HeyGuo.android.db.Tabs;
 import com.HeyGuo.android.db.User;
+import com.HeyGuo.android.mvp.view.MainActivityView;
+import com.HeyGuo.android.utils.ToastManager;
 import com.HeyGuo.android.widget.MyListView;
 
 import org.litepal.crud.DataSupport;
@@ -34,13 +36,15 @@ import java.util.List;
  * @time 2017/7/28 12:19
  * content:主界面   采用BaseActivity的统一头布局
  */
-public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, Adapter01.Callback, View.OnClickListener {
+public class MainActivity extends BaseActivity implements Adapter01.Callback, View.OnClickListener, MainActivityView {
     View view;
     GridView gv;
     List<String> list = new ArrayList<>();
     List<String> list2 = new ArrayList<>();
-    String[] titles1 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
+    String[] titles1 = {"A1 号桌", "A2 号桌", "A3 号桌", "A4 号桌", "A5 号桌", "A6 号桌", "A7 号桌", "A8 号桌", "A9 号桌", "A10 号桌", "A11 号桌", "A12 号桌", "A13 号桌", "A14 号桌", "A15 号桌", "A16 号桌"};
     String[] titles2 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
+    //记录点击的桌子的临时id
+    private int tabsId;
 
     /**
      * @author Mr.Yang
@@ -70,6 +74,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     protected void initOtherEvent() {
         gv.setAdapter(new Adapter01(list, MainActivity.this, MainActivity.this));
+
     }
 
     @Override
@@ -90,16 +95,11 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         return true;
     }
 
-    //条目点击事件 跳转到订单详情界面
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
     //条目里面的按钮的点击事件，利用接口回调
     @Override
     public void click(View v) {
         switch (v.getId()) {
+            //桌子的id
             case R.id.tabs_tv_id:
                 //要知道是点的是那一张桌子，利用for循环，获取对应的id
 //                for(int i = 0; i < list.size(); i ++){
@@ -116,6 +116,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                         break;
                 }
                 break;
+            //桌子的订单
             //显示订单
             case R.id.tabs_bt_tabsState:
                 switch ((int) v.getTag()) {
@@ -125,6 +126,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                         break;
                 }
                 break;
+            //用餐时间
             //显示点餐人数选择
             case R.id.tabs_tv_time:
                 switch ((int) v.getTag()) {
@@ -152,20 +154,27 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                         break;
                 }
                 break;
-            //显示退菜界面
+            //用餐情况
+            case R.id.tabs_tv_state:
+                switch (v.getId()) {
+                    case 0:
+
+                        break;
+                }
+                //结账
             case R.id.tabs_bt_submit:
                 switch ((int) v.getTag()) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this, RetreatFoodActivity.class);
+                        Intent intent = new Intent(MainActivity.this, CheckOutActivity.class);
                         startActivity(intent);
                         break;
                 }
                 break;
-            //显示结账界面
+            //加菜
             case R.id.tabs_bt_add:
                 switch ((int) v.getTag()) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this, CheckOutActivity.class);
+                        Intent intent = new Intent(MainActivity.this, RetreatFoodActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -177,6 +186,37 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public void onClick(View v) {
 
+    }
+    @Override
+    public String getTabsid() {
+        return null;
+    }
+
+    @Override
+    public String getTabstate() {
+        return null;
+    }
+
+    @Override
+    public String getTabnum() {
+        return null;
+    }
+
+    @Override
+    public String getTabtime() {
+        return null;
+    }
+
+    //param : 1 开桌；2 关桌
+    @Override
+    public void showFailedError(int i) {
+        if (i == 1) {
+            //开桌失败的显示
+            ToastManager.showToast(MainActivity.this, "开桌失败，请重新操作！", 1000);
+        } else if (i == 2) {
+            //关桌失败的显示
+            ToastManager.showToast(MainActivity.this, "关桌失败，请重新操作！", 1000);
+        }
     }
 }
 
