@@ -7,7 +7,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:background="@drawable/edittext_shape_anothers">
+        android:background="@drawable/food_select_item_selector">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -21,4 +21,6 @@ public interface LoginActivityView {
     void toMainActivity(User user);
 
     void showFailedError();
+
+
 }

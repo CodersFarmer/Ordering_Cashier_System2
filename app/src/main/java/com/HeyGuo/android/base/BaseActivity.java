@@ -1,6 +1,7 @@
 package com.HeyGuo.android.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.HeyGuo.android.R;
+import com.HeyGuo.android.ui.activity.LoginActivity;
 import com.HeyGuo.android.utils.ActivityCollector;
 
 import static com.HeyGuo.android.utils.ToastManager.showToast;
@@ -83,7 +85,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     //刷新
     public void quit(View v){
-        Toast.makeText(BaseActivity.this,"我是退出",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
     //初始化布局
     private void initView() {

@@ -1,10 +1,7 @@
 package com.HeyGuo.android.mvp.model;
 
-import com.HeyGuo.android.db.Food;
-import com.HeyGuo.android.db.Tabs;
-import com.HeyGuo.android.db.User;
 
-import java.util.List;
+import com.HeyGuo.android.db.User;
 
 /**
  * Author：YQZ
@@ -14,9 +11,6 @@ import java.util.List;
  * 登陆的网络耗时操作
  */
 public class UserLoginIm implements UserLoginIf {
-    List<User> userListlist;
-    List<Tabs> tabsList;
-    List<Food> foodList;
     @Override
     public void login(final String username, final String password, final String storeid, final OnLoginListener loginListener) {
         new Thread() {
@@ -28,7 +22,7 @@ public class UserLoginIm implements UserLoginIf {
                 //往数据库存用户、食物、餐桌、订单的数据
                 //失败，提示，重新登陆
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();

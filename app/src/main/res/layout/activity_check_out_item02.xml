@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/activity_check_out_moling"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center_vertical"

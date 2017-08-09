@@ -45,8 +45,8 @@
 
                 <Button
                     android:id="@+id/activity_check_out_retreat"
-                    android:layout_width="40dp"
-                    android:layout_height="25dp"
+                    android:layout_width="45dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
@@ -160,6 +160,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
                     android:text="应收金额" />
 
                 <EditText
@@ -180,11 +181,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="@android:color/black"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:text="应收金额" />
+                    android:text="实收金额" />
 
                 <EditText
                     android:padding="5dp"
@@ -221,7 +223,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:text="应收金额" />
+                android:textColor="@android:color/black"
+                android:text="收到现金" />
 
             <EditText
                 android:padding="5dp"
@@ -246,7 +249,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:text="应收金额" />
+                android:textColor="@android:color/black"
+                android:text="找零" />
 
             <EditText
                 android:padding="5dp"
@@ -261,7 +265,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-
             android:layout_height="0dp"
             android:layout_margin="5dp"
             android:layout_weight="4"
@@ -272,7 +275,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:text="应收金额" />
+                android:textColor="@android:color/black"
+                android:text="备注" />
 
             <EditText
                 android:padding="5dp"
@@ -291,8 +295,9 @@
             android:layout_height="0dp"
             android:layout_margin="3dp"
             android:layout_weight="2"
+            android:textSize="20dp"
             android:background="@drawable/edittext_shape_green"
-            android:text="确认"
+            android:text="√ 确认"
             android:textColor="#ffffff" />
 
         <View
@@ -307,6 +312,7 @@
             android:layout_height="0dp"
             android:layout_margin="3dp"
             android:layout_weight="1.5"
+            android:textSize="15dp"
             android:background="@drawable/edittext_shape_red"
             android:text="返回"
             android:textColor="#ffffff" />

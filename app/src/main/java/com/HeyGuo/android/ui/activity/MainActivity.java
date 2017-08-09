@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
     String[] titles2 = {"怀师", "南怀瑾军校", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相", "南公庄严照", "怀师法相", "闭关", "南怀瑾", "南公庄严照", "怀师法相"};
     //记录点击的桌子的临时id
     private int tabsId;
-
+    AlertDialog alertDialog01;
     /**
      * @author Mr.Yang
      * @time 2017/8/5 13:54
@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -111,8 +112,7 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
 //                }
                 switch ((int) v.getTag()) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this, SelectActivity.class);
-                        startActivity(intent);
+
                         break;
                 }
                 break;
@@ -131,11 +131,12 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
             case R.id.tabs_tv_time:
                 switch ((int) v.getTag()) {
                     case 0:
-                        // Toast.makeText(getApplicationContext(),"我是第一张桌子",Toast.LENGTH_SHORT).show();
                         View tv = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item01, null);
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setCustomTitle(tv);
                         View view = LayoutInflater.from(this).inflate(R.layout.activity_num_select_item02, null);
+                        //对选餐人数的判断
+
                         builder.setView(view);
                         builder.setCancelable(true);
                         builder.setPositiveButton("确认开桌", new DialogInterface.OnClickListener() {
@@ -150,17 +151,18 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
 
                             }
                         });
-                        builder.show();
+                        alertDialog01 = builder.show();
                         break;
                 }
                 break;
-            //用餐情况
+            //用餐情况 钱和人数
             case R.id.tabs_tv_state:
-                switch (v.getId()) {
+                switch ((int) v.getTag()) {
                     case 0:
-
-                        break;
-                }
+                            ToastManager.showToast(MainActivity.this, "用餐情况 钱和人数!", 1000);
+                            break;
+                    }
+                    break;
                 //结账
             case R.id.tabs_bt_submit:
                 switch ((int) v.getTag()) {
@@ -174,7 +176,7 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
             case R.id.tabs_bt_add:
                 switch ((int) v.getTag()) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this, RetreatFoodActivity.class);
+                        Intent intent = new Intent(MainActivity.this, SelectActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -187,6 +189,58 @@ public class MainActivity extends BaseActivity implements Adapter01.Callback, Vi
     public void onClick(View v) {
 
     }
+
+    //选餐人数的点击事件
+    public void add1(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add2(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了2个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add3(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add4(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add5(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add6(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add7(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add8(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add9(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
+    public void add10(View view) {
+        ToastManager.showToast(MainActivity.this, "添加了1个人", 1000);
+        alertDialog01.dismiss();
+    }
+
     @Override
     public String getTabsid() {
         return null;

@@ -119,6 +119,7 @@ public class OrderDataActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.activity_order_data_close:
                 finish();
+                break;
             case R.id.activity_order_data_retreat:
                 Intent intent = new Intent(OrderDataActivity.this, RetreatFoodActivity.class);
                 startActivity(intent);

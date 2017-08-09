@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Selection;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,20 +34,24 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
     private LayoutInflater mLayoutinflater;
     Button button02;
     Button button03;
+    EditText editText01;
+    Button button04;
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mLayoutinflater = LayoutInflater.from(CheckOutActivity.this);
     }
+
     @Override
     protected void initFalseData() {
-            list.add("无折扣");
-            list.add("股东折(7折)");
-            list.add("抹零" );
-            list.add("活动" );
-            list.add("免单" );
-
+        list.add("无折扣");
+        list.add("股东折(7折)");
+        list.add("抹零");
+        list.add("活动");
+        list.add("免单");
     }
+
     @Override
     protected void initOtherEvent() {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
@@ -55,11 +61,23 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 2) {
+                if (position == 2) { //抹零
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(CheckOutActivity.this);
                     View view01 = mLayoutinflater.inflate(R.layout.activity_check_out_item01, null);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CheckOutActivity.this);
+                    button04 = (Button) view01.findViewById(R.id.activity_check_out_quit);
+                    button04.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
                     builder.setCustomTitle(view01);
                     View view02 = mLayoutinflater.inflate(R.layout.activity_check_out_item02, null);
+                    editText01 = (EditText) view02.findViewById(R.id.activity_check_out_moling);
+                    //抹零的金额
+                    editText01.setText("3");
+                    //设置edittext里面的内容，默认是选中的
+                    Selection.selectAll(editText01.getText());
                     builder.setView(view02);
                     builder.setCancelable(true);
                     builder.setNegativeButton("确认抹零", new DialogInterface.OnClickListener() {
@@ -68,9 +86,10 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
 
                         }
                     });
-                    builder.show();
+                    alertDialog = builder.show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -80,6 +99,7 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
         button02.setOnClickListener(this);
         button03.setOnClickListener(this);
     }
+
     @Override
     protected void initOtherView() {
         spinner = (Spinner) findViewById(R.id.sp_activity_discount);
@@ -100,7 +120,7 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         //请确认已结账，并且打印小票
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.activity_check_out_confirm:
                 View view03 = mLayoutinflater.inflate(R.layout.activity_check_out_item03, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(CheckOutActivity.this);
@@ -126,7 +146,7 @@ public class CheckOutActivity extends BaseActivity implements View.OnClickListen
                 break;
             //退菜
             case R.id.activity_check_out_retreat:
-                Intent intent = new Intent(CheckOutActivity.this,RetreatFoodActivity.class);
+                Intent intent = new Intent(CheckOutActivity.this, RetreatFoodActivity.class);
                 startActivity(intent);
                 break;
         }
